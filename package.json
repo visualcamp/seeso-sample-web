@@ -1,0 +1,21 @@
+{
+  "name": " ",
+  "version": "0.0.1",
+  "description": "",
+  "keywords": "",
+  "license": "",
+  "author": "",
+  "scripts": {
+    "build": "parcel build gazeSample.html --port 8080",
+    "serve": "parcel gazeSample.html --open --port 8080",
+    "start": "npm run build && npm run serve",
+    "gaze": "parcel samples/gaze/index.html --open --port 8080",
+    "calibration": "parcel samples/calibration/index.html --open --port 8080"
+  },
+  "devDependencies": {
+    "parcel-bundler": "^1.12.4"
+  },
+  "dependencies": {
+    "wasm-check": "^2.0.1"
+  }
+}
