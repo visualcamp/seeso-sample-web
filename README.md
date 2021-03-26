@@ -15,6 +15,7 @@ Latest ✔ | Available Soon  |✘ | Available Soon  | ✘|
 - Overview:  https://docs.seeso.io/docs/seeso-sdk-overview/
 - Quick Start:  https://docs.seeso.io/docs/ios-quick-start/
 
+
 ### To run Gaze sample.
 ```
 $ git clone https://github.com/visualcamp/SeeSoSample-Web.git
@@ -42,6 +43,7 @@ $ npm install seeso
 <script src="https://cdn.seeso.io/seeso.js"></script>
 ```
 
+
 ### SIMD Setting (Chrome Optional)
 
 > Using this setting improves the performance of the SDK.
@@ -50,3 +52,9 @@ $ npm install seeso
 2. Set WebAssembly SIMD support `Enabled`
 ![SIMD setting](/img/web-quick-start/simd-chrome-setting.png)
  
+
+### Notes
+- Make sure you replace `licenseKey` issued from [here](https://console.seeso.io/#/console/license-keys) before running these samples.
+```
+const licenseKey = 'YOUR_LICENSE_KEY_HERE';
+```
