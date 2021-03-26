@@ -1,5 +1,6 @@
 /* eslint-disable */
 
+export const SEESO_VERSION = '2.3.0';
 export const MAX_FPS = 30;
 export const INTERVAL_TIME_MS = 1000 / MAX_FPS;
 export const DEBUG_INTERVAL_TIME_MS = 1000;

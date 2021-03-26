@@ -1,8 +1,8 @@
-import Gaze, {InitializationErrorType, CalibrationAccuracyCriteria} from './gaze';
+import Seeso, {InitializationErrorType, CalibrationAccuracyCriteria} from './seeso';
 
-class Seeso {
+class EasySeeso {
   constructor() {
-    this.gaze = new Gaze();
+    this.seeso = new Seeso();
     this.onGaze = null;
     this.onDebug = null;
     this.onCalibrationNextPoint = null;
@@ -11,12 +11,12 @@ class Seeso {
   }
 
   async init(licenseKey, afterInitialized, afterFailed) {
-    await this.gaze.initialize(licenseKey).then(function(errCode) {
+    await this.seeso.initialize(licenseKey).then(function(errCode) {
       if (errCode === InitializationErrorType.ERROR_NONE) {
         afterInitialized();
-        this.gaze.addCalibrationFinishCallback(
+        this.seeso.addCalibrationFinishCallback(
             this.onCalibrationFinished_.bind(this));
-        this.gaze.addGazeCallback(this.onGaze_.bind(this));
+        this.seeso.addGazeCallback(this.onGaze_.bind(this));
       } else {
         afterFailed();
       }
@@ -24,107 +24,111 @@ class Seeso {
   }
 
   deinit() {
-    this.gaze.removeGazeCallback(this.onGaze);
-    this.gaze.deinitialize();
+    this.seeso.removeGazeCallback(this.onGaze);
+    this.seeso.deinitialize();
   }
 
   async startTracking(onGaze, onDebug) {
     const stream = await navigator.mediaDevices.getUserMedia({'video': true});
-    this.gaze.addDebugCallback(onDebug);
-    if (this.gaze.startTracking(stream)) {
+    this.seeso.addDebugCallback(onDebug);
+    if (this.seeso.startTracking(stream)) {
       this.onGaze = onGaze;
       this.onDebug = onDebug;
       return true;
     } else {
-      this.gaze.removeDebugCallback(this.onDebug);
+      this.seeso.removeDebugCallback(this.onDebug);
       return false;
     }
   }
 
   stopTracking() {
-    this.gaze.stopTracking();
-    this.gaze.removeDebugCallback(this.onDebug);
+    this.seeso.stopTracking();
+    this.seeso.removeDebugCallback(this.onDebug);
     this.onGaze = null;
     this.onDebug = null;
   }
 
   startCalibration(onCalibrationNextPoint, onCalibrationProgress, onCalibrationFinished, calibrationPoints=5) {
-    this.gaze.addCalibrationNextPointCallback(onCalibrationNextPoint);
-    this.gaze.addCalibrationProgressCallback(onCalibrationProgress);
-    const isStart = this.gaze.startCalibration(calibrationPoints, CalibrationAccuracyCriteria.Default);
+    this.seeso.addCalibrationNextPointCallback(onCalibrationNextPoint);
+    this.seeso.addCalibrationProgressCallback(onCalibrationProgress);
+    const isStart = this.seeso.startCalibration(calibrationPoints, CalibrationAccuracyCriteria.Default);
     if (isStart) {
       this.onCalibrationNextPoint = onCalibrationNextPoint;
       this.onCalibrationProgress = onCalibrationProgress;
       this.onCalibrationFinished = onCalibrationFinished;
     } else {
-      this.gaze.removeCalibrationNextPointCallback(this.onCalibrationNextPoint);
-      this.gaze.removeCalibrationProgressCallback(this.onCalibrationProgress);
+      this.seeso.removeCalibrationNextPointCallback(this.onCalibrationNextPoint);
+      this.seeso.removeCalibrationProgressCallback(this.onCalibrationProgress);
     }
     return isStart;
   }
 
   stopCalibration() {
-    return this.gaze.stopCalibration();
+    return this.seeso.stopCalibration();
   }
 
   setTrackingFps(fps) {
-    this.gaze.setTrackingFps(fps);
+    this.seeso.setTrackingFps(fps);
   }
 
   async fetchCalibrationData(userId) {
-    return this.gaze.fetchCalibrationData(userId);
+    return this.seeso.fetchCalibrationData(userId);
   }
 
   async uploadCalibrationData(userId) {
-    return this.gaze.uploadCalibrationData(userId);
+    return this.seeso.uploadCalibrationData(userId);
   }
 
   showImage() {
-    this.gaze.showImage();
+    this.seeso.showImage();
   }
 
   hideImage() {
-    this.gaze.hideImage();
+    this.seeso.hideImage();
   }
 
   startCollectSamples() {
-    this.gaze.startCollectSamples();
+    this.seeso.startCollectSamples();
   }
 
   setMonitorSize(monitorInch) {
-    this.gaze.setMonitorSize(monitorInch);
+    this.seeso.setMonitorSize(monitorInch);
   }
 
   setFaceDistance(faceDistance) {
-    this.gaze.setFaceDistance(faceDistance);
+    this.seeso.setFaceDistance(faceDistance);
   }
 
   setCameraPosition(cameraX, cameraOnTop) {
-    this.gaze.setCameraPosition(cameraX, cameraOnTop);
+    this.seeso.setCameraPosition(cameraX, cameraOnTop);
   }
 
   getCameraPosition () {
-    return this.gaze.getCameraPosition();
+    return this.seeso.getCameraPosition();
   }
 
   getFaceDistance() {
-    return this.gaze.getFaceDistance();
+    return this.seeso.getFaceDistance();
   }
 
   getMonitorSize () {
-    return this.gaze.getMonitorSize();
+    return this.seeso.getMonitorSize();
   }
 
   async setCalibrationData(calibrationDataString) {
-    await this.gaze.setCalibrationData(calibrationDataString);
+    await this.seeso.setCalibrationData(calibrationDataString);
   }
 
   static openCalibrationPage(licenseKey, userId, redirectUrl, calibraitonPoint) {
-    Gaze.openCalibrationPage(licenseKey, userId, redirectUrl, calibraitonPoint)
+    Seeso.openCalibrationPage(licenseKey, userId, redirectUrl, calibraitonPoint)
   }
 
   static openCalibrationPageQuickStart(licenseKey, userId, redirectUrl, calibraitonPoint) {
-    Gaze.openCalibrationPageQuickStart(licenseKey, userId, redirectUrl, calibraitonPoint);
+    Seeso.openCalibrationPageQuickStart(licenseKey, userId, redirectUrl, calibraitonPoint);
+  }
+
+  static getVersionName () {
+    return Seeso.getVersionName();
   }
   /**
    * For type hinting
@@ -143,11 +147,11 @@ class Seeso {
     if (this.onCalibrationFinished) {
       this.onCalibrationFinished(calibrationData);
     }
-    this.gaze.removeCalibrationNextPointCallback(this.onCalibrationNextPoint);
-    this.gaze.removeCalibrationProgressCallback(this.onCalibrationProgress);
+    this.seeso.removeCalibrationNextPointCallback(this.onCalibrationNextPoint);
+    this.seeso.removeCalibrationProgressCallback(this.onCalibrationProgress);
     this.onCalibrationFinished = null;
     this.onCalibrationProgress = null;
   }
 }
 
-export default Seeso;
+export default EasySeeso;

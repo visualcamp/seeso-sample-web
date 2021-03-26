@@ -1,5 +1,6 @@
 /* eslint-disable */
 import {
+  SEESO_VERSION,
   CALIBRATION_REGION_RATIO,
   DEBUG_INTERVAL_TIME_MS,
   INTERVAL_TIME_MS,
@@ -54,12 +55,12 @@ const ColorFormat = Object.freeze({
   ELSE: 6,
 });
 
-class Gaze {
+class Seeso {
   constructor() {
-    if (Gaze.gaze) {
-      return Gaze.gaze;
+    if (Seeso.gaze) {
+      return Seeso.gaze;
     }
-    Gaze.gaze = this;
+    Seeso.gaze = this;
 
     this.thread = null;
     this.debugThread = null;
@@ -427,6 +428,10 @@ class Gaze {
         [this.eyeTracker]);
   }
 
+  static getVersionName() {
+    return SEESO_VERSION;
+  }
+
   /**
    * For debugging, have to remove
    */
@@ -578,7 +583,7 @@ class Gaze {
 
   /** @private */
   sendInitCallback_(_trackerPtr, _errCode) {
-    const instance = Gaze.gaze;
+    const instance = Seeso.gaze;
     instance.eyeTracker = _trackerPtr;
     if (_errCode == 0) {
       instance.errCode = InitializationErrorType.ERROR_NONE;
@@ -692,39 +697,39 @@ class Gaze {
 
   /** @private */
   wasmGazeCallback_(_timestamp, _x, _y, _trackingState, _eyeMovmentState) {
-    if (Gaze.gaze.befTime === -1) {
-      Gaze.gaze.befTime = Date.now();
+    if (Seeso.gaze.befTime === -1) {
+      Seeso.gaze.befTime = Date.now();
     } else {
       const curTime = Date.now();
-      Gaze.gaze.latencyList.push(curTime - Gaze.gaze.befTime);
-      Gaze.gaze.befTime = curTime;
+      Seeso.gaze.latencyList.push(curTime - Seeso.gaze.befTime);
+      Seeso.gaze.befTime = curTime;
     }
-    const {browser_x, browser_y} = Gaze.gaze.cm_to_pixel_(_x, _y, false);
+    const {browser_x, browser_y} = Seeso.gaze.cm_to_pixel_(_x, _y, false);
     const gazeInfo = new GazeInfo(_timestamp, browser_x, browser_y, _trackingState, _eyeMovmentState);
-    Gaze.gaze.gazeCallbacks.forEach((fn) => {
+    Seeso.gaze.gazeCallbacks.forEach((fn) => {
       fn(gazeInfo);
     });
   }
 
   /** @private */
   wasmCalibrationProgress_(_progress, _x, _y) {
-    const {browser_x, browser_y} = Gaze.gaze.cm_to_pixel_(_x, _y, false);
+    const {browser_x, browser_y} = Seeso.gaze.cm_to_pixel_(_x, _y, false);
     const progress = _progress;
 
     if (_progress >= 1.0) {
-      Gaze.gaze.calibrationNextPointCallbacks.forEach((fn) => {
+      Seeso.gaze.calibrationNextPointCallbacks.forEach((fn) => {
         fn(browser_x, browser_y);
       });
     }
 
-    Gaze.gaze.calibrationProgressCallbacks.forEach((fn) => {
+    Seeso.gaze.calibrationProgressCallbacks.forEach((fn) => {
       fn(progress);
     });
   }
 
   /** @private */
   wasmCalibrationFinished_(calibrationData, dataSize) {
-    let seeso = Gaze.gaze;
+    let seeso = Seeso.gaze;
     const buffer = new ArrayBuffer(dataSize);
     const intArr = new Uint8Array(buffer);
     intArr.set(seeso.trackerModule.HEAPU8.subarray(calibrationData,
@@ -734,7 +739,7 @@ class Gaze {
     const cameraInfo = seeso.getCameraPosition();
     const monitorInch = seeso.getMonitorSize();
     const faceDistance = seeso.getFaceDistance();
-    Gaze.gaze.calibrationFinishCallbacks.forEach((fn) => {
+    Seeso.gaze.calibrationFinishCallbacks.forEach((fn) => {
       fn(new CalibrationData({
         vector: calibrationB64,
         vectorLength: dataSize,
@@ -826,4 +831,4 @@ class Gaze {
   }
 }
 
-export default Gaze;
+export default Seeso;
