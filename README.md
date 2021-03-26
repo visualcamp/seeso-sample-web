@@ -14,6 +14,21 @@ Latest ✔ | Available Soon ✘︎ |✘ | ✘ | ✘ | ✘|
 - Overview:  https://docs.seeso.io/docs/seeso-sdk-overview/
 - Quick Start:  https://docs.seeso.io/docs/ios-quick-start/
 
+### To run Gaze sample.
+```
+$ git clone https://github.com/visualcamp/SeeSoSample-Web.git
+$ npm install
+$ npm run gaze
+```
+
+### To run Calibration Sample
+```
+$ git clone https://github.com/visualcamp/SeeSoSample-Web.git
+$ npm install
+$ npm run calibration
+```
+
+
 ### How to install SeeSo:
 
 * Using npm: It will be available soon.
@@ -34,16 +49,3 @@ $ npm install seeso
 2. Set WebAssembly SIMD support `Enabled`
 ![SIMD setting](/img/web-quick-start/simd-chrome-setting.png)
  
-### To run Gaze sample.
-```
-$ git clone https://github.com/visualcamp/SeeSoSample-Web.git
-$ npm install
-$ npm run gaze
-```
-
-### To run Calibration Sample
-```
-$ git clone https://github.com/visualcamp/SeeSoSample-Web.git
-$ npm install
-$ npm run calibration
-```
