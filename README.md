@@ -1,8 +1,23 @@
-# SeeSo_JS_Vanilla
-SeeSo JS SDK를  Pure HTML 과 Vanilla JS 환경에서 구동시키는 예제 레포지토리.
+# SeeSo Web Sample
 
-# how to run:
-  - in chrome
-  - `npm install`
-  - `parcel serve index.html --port 8080` (npm run dev)
+Sample project to demostrate how SeeSo SDK works
 
+# Documentation
+- overview:  https://docs.seeso.io/docs/seeso-sdk-overview/
+- quick start:  https://docs.seeso.io/docs/ios-quick-start/
+
+# How to install:
+```
+git clone https://github.com/visualcamp/SeeSoSample-Web.git
+npm install
+ ```
+ 
+## To run Gaze sample.
+```
+npm run gaze
+```
+
+## To run Calibration Sample
+```
+npm run calibration
+```
