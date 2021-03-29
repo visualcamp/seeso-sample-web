@@ -13,7 +13,7 @@ Latest ✔ | Available Soon  |✘ | Available Soon  | ✘|
 
 ### Documentation
 - Overview:  https://docs.seeso.io/docs/seeso-sdk-overview/
-- Quick Start:  https://docs.seeso.io/docs/ios-quick-start/
+- Quick Start:  https://docs.seeso.io/docs/web-quick-start/
 
 
 ### To run Gaze sample.
