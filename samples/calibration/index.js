@@ -1,5 +1,5 @@
 import 'regenerator-runtime/runtime';
-import EasySeeSo from "../SeeSo/easy-seeso";
+import EasySeeSo from 'seeso_test/easy-seeso';
 import showGaze from "../showGaze";
 
 const licenseKey = 'YOUR_LICENSE_KEY_HERE';

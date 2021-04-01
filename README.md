@@ -33,7 +33,7 @@ $ npm run calibration
 
 ### How to install SeeSo:
 
-* Using npm: It will be available soon.
+* Using npm:
 ```shell script
 $ npm install seeso
 ```
@@ -50,7 +50,7 @@ $ npm install seeso
 
 1. Go to `chrome://flags/`
 2. Set WebAssembly SIMD support `Enabled`
-![SIMD setting](/img/web-quick-start/simd-chrome-setting.png)
+![SIMD setting](https://docs.seeso.io/img/web-quick-start/simd-chrome-setting.png)
  
 
 ### Notes
