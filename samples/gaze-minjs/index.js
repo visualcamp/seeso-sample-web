@@ -2,8 +2,8 @@ import 'regenerator-runtime/runtime';
 
 import showGaze from "../showGaze";
 
-// npm module
-import EasySeeSo from 'seeso/easy-seeso';
+// min js
+import EasySeeSo from '../../seeso-minjs/easy-seeso';
 
 const licenseKey = 'YOUR_LICENSE_KEY_HERE'; // Issue license key! -> https://console.seeso.io
 
