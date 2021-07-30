@@ -3,9 +3,7 @@
 </p>
 <div align="center">
     <h1>SeeSo Web Sample</h1>
-    <a href="https://github.com/visualcamp/seeso-sample-windows/releases" alt="release">
-        <img src="https://img.shields.io/badge/version-2.4.0-blue" />
-    </a>
+    <img src="https://img.shields.io/badge/version-2.4.0-blue" />
 </div>
 
 ## SeeSo
