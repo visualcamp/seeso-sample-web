@@ -7,18 +7,22 @@
   "author": "",
   "scripts": {
     "build": "parcel build gazeSample.html --port 8082",
-    "serve": "NODE_ENV=development parcel samples/gaze/index.html --open --port 8082",
-    "serve-minjs": "NODE_ENV=development parcel samples/gaze-minjs/index.html --open --port 8082",
+    "serve": "NODE_ENV=development node devServer.js samples/gaze/index.html 8082",
+    "serve-minjs": "NODE_ENV=development node devServer samples/gaze-minjs/index.html 8082",
     "start": "npm run build && npm run serve",
-    "gaze": "NODE_ENV=development parcel samples/gaze/index.html --open --port 8082",
-    "gaze-minjs": "NODE_ENV=development parcel samples/gaze-minjs/index.html --open --port 8082",
-    "calibration": "parcel samples/calibration/index.html --open --port 8082"
+    "gaze": "cross-env NODE_ENV=development node devServer.js samples/gaze/index.html 8082",
+    "gaze-minjs": "NODE_ENV=development node devServer samples/gaze-minjs/index.html 8082",
+    "calibration": "node devServer samples/calibration/index.html 8082"
   },
   "devDependencies": {
     "parcel-bundler": "^1.12.4"
   },
   "dependencies": {
+    "cross-env": "^7.0.3",
+    "express": "^4.17.1",
+    "open": "^8.2.1",
     "seeso": "^0.1.3",
+    "seeso_test": "0.0.29",
     "wasm-check": "^2.0.1"
   }
 }
