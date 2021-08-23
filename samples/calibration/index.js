@@ -6,7 +6,7 @@ const licenseKey = 'YOUR_LICENSE_KEY_HERE';
 
 function onClickCalibrationBtn(){
     const userId = 'YOUR_USER_ID'; // ex) 5e9easf293
-    const redirectUrl = 'http://localhost:8080';
+    const redirectUrl = 'http://localhost:8082';
     const calibrationPoint = 1;
     EasySeeSo.openCalibrationPage(licenseKey, userId, redirectUrl, calibrationPoint);
 }
