@@ -40,7 +40,12 @@ async function main() {
         const seeSo = new EasySeeSo();
         await seeSo.setCalibrationData(calibrationData)
         await seeSo.init(licenseKey,
-            () => seeSo.startTracking(onGaze, onDebug), // callback when init succeeded.
+            () => {        
+                seeSo.setMonitorSize(16);
+                seeSo.setFaceDistance(50);
+                seeSo.setCameraPosition(window.outerWidth / 2, true);
+                seeSo.startTracking(onGaze, onDebug)
+            }, // callback when init succeeded.
             () => console.log("callback when init failed.") // callback when init failed.
         )
     } else {
