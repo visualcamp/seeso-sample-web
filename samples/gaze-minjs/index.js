@@ -28,11 +28,14 @@ async function main() {
    * camera x: right center
    * cameraOnTop: true
    */
-  seeSo.setMonitorSize(16);
-  seeSo.setFaceDistance(50);
-  seeSo.setCameraPosition(window.outerWidth / 2, true);
+  
   await seeSo.init(licenseKey,
-      () => seeSo.startTracking(onGaze, onDebug), // callback when init succeeded.
+      () => {
+        seeSo.setMonitorSize(16);
+        seeSo.setFaceDistance(50);
+        seeSo.setCameraPosition(window.outerWidth / 2, true);
+        seeSo.startTracking(onGaze, onDebug)
+      }, // callback when init succeeded.
       () => console.log("callback when init failed"),  // callback when init failed.
   )
 }
