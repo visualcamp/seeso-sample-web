@@ -1,13 +1,13 @@
 import 'regenerator-runtime/runtime';
-import EasySeeSo from 'seeso_test/easy-seeso';
+import EasySeeSo from 'seeso/easy-seeso';
 import showGaze from "../showGaze";
 
-const licenseKey = 'YOUR_LICENSE_KEY_HERE';
+const licenseKey = 'INPUT_YOUR_KEY';
 
 function onClickCalibrationBtn(){
     const userId = 'YOUR_USER_ID'; // ex) 5e9easf293
     const redirectUrl = 'http://localhost:8082';
-    const calibrationPoint = 1;
+    const calibrationPoint = 5;
     EasySeeSo.openCalibrationPage(licenseKey, userId, redirectUrl, calibrationPoint);
 }
 
@@ -40,8 +40,8 @@ async function main() {
         const seeSo = new EasySeeSo();
         await seeSo.init(licenseKey,
             async () => {        
-                await seeSo.setCalibrationData(calibrationData)
                 await seeSo.startTracking(onGaze, onDebug)
+                await seeSo.setCalibrationData(calibrationData)
             }, // callback when init succeeded.
             () => console.log("callback when init failed.") // callback when init failed.
         )
