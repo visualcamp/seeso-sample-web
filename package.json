@@ -6,10 +6,9 @@
   "license": "",
   "author": "",
   "scripts": {
-    "build": "parcel build gazeSample.html --port 8082",
     "serve": "cross-env NODE_ENV=development node devServer.js samples/gaze/index.html 8082",
     "serve-minjs": "cross-env NODE_ENV=development node devServer.js samples/gaze-minjs/index.html 8082",
-    "start": "npm run build && npm run serve",
+    "start": "npm run serve",
     "gaze": "cross-env NODE_ENV=development node devServer.js samples/gaze/index.html 8082",
     "gaze-minjs": "cross-env NODE_ENV=development node devServer.js samples/gaze-minjs/index.html 8082",
     "calibration": "node devServer samples/calibration/index.html 8082"
