@@ -3,7 +3,7 @@
 </p>
 <div align="center">
     <h1>SeeSo Web Sample</h1>
-    <img src="https://img.shields.io/badge/version-2.4.0-blue" />
+    <img src="https://img.shields.io/badge/version-2.4.1-blue" />
 </div>
 
 ## SeeSo
@@ -20,9 +20,9 @@ In 2021, SeeSo was recognized for its innovative technology and won GLOMO Award 
 * API: https://docs.seeso.io/docs/api/web-api-docs
 
 ## Requirements
-![Chrome](https://raw.github.com/alrra/browser-logos/master/src/chrome/chrome_48x48.png) | ![Firefox](https://raw.github.com/alrra/browser-logos/master/src/firefox/firefox_48x48.png) | ![Safari](https://raw.github.com/alrra/browser-logos/master/src/safari/safari_48x48.png) | ![Edge](https://raw.github.com/alrra/browser-logos/master/src/edge/edge_48x48.png) | ![IE](https://raw.github.com/alrra/browser-logos/master/src/archive/internet-explorer_9-11/internet-explorer_9-11_48x48.png) |
+![Chrome](https://raw.github.com/alrra/browser-logos/master/src/chrome/chrome_48x48.png) | ![Firefox](https://raw.github.com/alrra/browser-logos/master/src/firefox/firefox_48x48.png) | ![Safari](https://raw.github.com/alrra/browser-logos/master/src/safari/safari_48x48.png) | ![Edge](https://raw.github.com/alrra/browser-logos/master/src/edge/edge_48x48.png) |  |
 --- | --- | --- | --- | --- |
-80 and above ✔ | Available Soon  |✘ | Available Soon  | ✘|
+80 and above ✔ | ✔   |✘ | ✔   |
 
 * Must be issued a license key in [SeeSo Manage](https://manage.seeso.io/)
 
@@ -57,14 +57,6 @@ $ npm install seeso
 ```html
 <script src="https://cdn.seeso.io/seeso.js"></script>
 ```
-
-## SIMD Setting (Chrome Optional)
-
-> Using this setting improves the performance of the SDK.
-
-1. Go to `chrome://flags/`
-2. Set WebAssembly SIMD support `Enabled`
-![SIMD setting](https://docs.seeso.io/nonversioning/document/advanced-web)
       
 ## Contact Us
 If you have any problems, feel free to [contact us](https://seeso.io/Contact-Us) 
