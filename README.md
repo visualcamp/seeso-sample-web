@@ -3,7 +3,7 @@
 </p>
 <div align="center">
     <h1>SeeSo Web Sample</h1>
-    <img src="https://img.shields.io/badge/version-2.4.1-blue" />
+    <img src="https://img.shields.io/badge/version-2.4.2-blue" />
 </div>
 
 ## SeeSo
