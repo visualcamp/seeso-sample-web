@@ -2,7 +2,6 @@ const Bundler = require('parcel-bundler');
 const express = require('express');
 const http = require('http');
 const open = require('open');
-
 const app = express();
 
 const bundlePath = process.argv[2];
@@ -20,6 +19,7 @@ app.use(bundler.middleware());
 
 const server = http.createServer(app);
 server.listen(port);
+
 
 server.on('error', (err) => console.error(err));
 server.on('listening', () => {

@@ -1,6 +1,6 @@
 import 'regenerator-runtime/runtime';
 
-import showGaze from "../showGaze";
+import {showGaze} from "../showGaze";
 
 // min js
 import EasySeeSo from '../../seeso-minjs/easy-seeso';

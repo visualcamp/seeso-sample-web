@@ -28,7 +28,7 @@ In 2021, SeeSo was recognized for its innovative technology and won GLOMO Award 
 
 ## Setting License Key
 * Clone or download this project.
-* Get a license key from https://manage.seeso.io and copy your key to [`gaze/index.js`](/samples/gaze/index.js#L8), [`gaze-minjs/index.js`](/samples/gaze-minjs/index.js#L8), [`calibration/index.js`](/samples/calibration/index.js#L5)
+* Get a license key from https://manage.seeso.io and copy your key to [`gaze/index.js`](/samples/gaze/index.js#L8), [`gaze-minjs/index.js`](/samples/gaze-minjs/index.js#L8), [`calibration/index.js`](/samples/calibration/index.js#L5), [`custom-calibration/index.js`](/samples/custom-calibration/index.js#L5)
    ```
    const licenseKey = 'YOUR_LICENSE_KEY_HERE'; // Issue license key! -> https://manage.seeso.io
    ```
@@ -44,6 +44,12 @@ $ npm run gaze
 ```
 $ npm install
 $ npm run calibration
+```
+
+* To run Custom Calibration sample
+```
+$ npm install
+$ npm run custom-calibration
 ```
 
 ## How to install SeeSo

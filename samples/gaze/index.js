@@ -1,6 +1,6 @@
 import 'regenerator-runtime/runtime';
 
-import showGaze from "../showGaze";
+import {showGaze} from "../showGaze";
 
 // npm module
 import EasySeeSo from 'seeso/easy-seeso';
