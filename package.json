@@ -21,7 +21,7 @@
     "cross-env": "^7.0.3",
     "express": "^4.17.1",
     "open": "^8.2.1",
-    "seeso": "^0.2.0-beta-6",
+    "seeso": "^0.2.0-beta-18",
     "wasm-check": "^2.0.1"
   }
 }
