@@ -4,6 +4,7 @@ import {showGaze} from "../showGaze";
 
 // npm module
 import EasySeeSo from 'seeso/easy-seeso';
+import {OneEuroFilter} from "../filter/OneEuroFilter";
 
 const licenseKey = 'YOUR_LICENSE_KEY_HERE'; // Issue license key! -> https://console.seeso.io
 
@@ -21,14 +22,14 @@ function onDebug(FPS, latency_min, latency_max, latency_avg){
 
 async function main() {
   const seeSo = new EasySeeSo();
-  /**
+
+    /**
    * set monitor size.    default: 16 inch.
    * set face distance.   default: 30 cm.
    * set camera position. default:
    * camera x: right center
    * cameraOnTop: true
    */
-
   await seeSo.init(licenseKey,
       () => {
       seeSo.setMonitorSize(16);
